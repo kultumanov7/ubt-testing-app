@@ -1,0 +1,32 @@
+FROM node:16 as dependencies
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+
+FROM node:16 as builder
+
+# begin envs
+ENV NODE_ENV production
+
+ARG BASE_URL
+ENV BASE_URL $BASE_URL
+
+ARG REACT_APP_ENV
+ENV REACT_APP_ENV $REACT_APP_ENV
+# end envs
+
+WORKDIR /app
+
+COPY . .
+COPY --from=dependencies /app/node_modules ./node_modules
+RUN npm run build
+
+
+FROM node:16 as runner
+
+WORKDIR /app
+
+COPY --from=builder /app .

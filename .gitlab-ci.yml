@@ -1,0 +1,57 @@
+stages:
+  - build
+  - start
+
+before_script:
+  - uname -a
+  - docker info
+
+
+# Dev
+
+dev-run-build:
+  environment: dev
+  stage: build
+  only:
+    - deploy/dev
+  script:
+    - mv devops/compose/docker-compose.dev.yml docker-compose.yml 
+    - docker-compose build
+  tags:
+    - dev
+
+dev-run-start:
+  environment: dev
+  stage: start
+  only:
+    - deploy/dev
+  script:
+    - mv devops/compose/docker-compose.dev.yml docker-compose.yml 
+    - docker-compose up -d
+  tags:
+    - dev
+
+
+# Prod
+
+prod-run-build:
+  environment: prod
+  stage: build
+  only:
+    - deploy/prod
+  script:
+    - mv devops/compose/docker-compose.prod.yml docker-compose.yml 
+    - docker-compose build
+  tags:
+    - prod
+
+prod-run-start:
+  environment: prod
+  stage: start
+  only:
+    - deploy/prod
+  script:
+    - mv devops/compose/docker-compose.prod.yml docker-compose.yml 
+    - docker-compose up -d
+  tags:
+    - prod

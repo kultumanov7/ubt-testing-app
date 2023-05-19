@@ -1,0 +1,52 @@
+version: '3.8'
+
+networks:
+  dev-network: {}
+
+x-shared-environment: &shared-environment {}
+
+x-base-image: &base-image
+  restart: always
+  networks:
+    dev-network: {}
+  environment:
+    <<: *shared-environment
+  logging:
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  dev-prep-web:
+    <<: *base-image
+    image: dev-prep-web
+    hostname: dev-prep-web
+    build:
+      context: .
+      dockerfile: devops/dockerfiles/Dockerfile.main
+      args:
+        BASE_URL: '$BASE_URL'
+        REACT_APP_ENV: 'development'
+    command: npm run start
+    ports:
+      - 3003:5173
+
+  # dev-proxy:
+  #   <<: *base-image
+  #   image: dev-proxy
+  #   hostname: dev-proxy
+  #   build:
+  #     context: devops
+  #     dockerfile: dockerfiles/Dockerfile.nginx.tsl.dev
+  #   links:
+  #     - dev-prep-web:web
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - /etc/letsencrypt/live/dev-smartestprep.com/fullchain.pem:/certs/fullchain.pem:ro
+  #     - /etc/letsencrypt/live/dev-smartestprep.com/privkey.pem:/certs/privkey.pem:ro
+  #   environment:
+  #     TZ: 'Asia/Almaty'
+  #   depends_on:
+  #     - dev-prep-web

@@ -1,0 +1,78 @@
+@import "@styles/variables";
+
+.my-tests-table {
+  border-collapse: separate;
+  background-color: white;
+  border-radius: 12px;
+  width: 100%;
+  border-spacing: 0;
+
+  &__status {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+  }
+
+  &__timing {
+    font-weight: 500;
+    font-size: 14px;
+    color: #475467;
+  }
+
+  .status {
+    font-weight: 600;
+    font-size: 16px;
+
+    &__green {
+      color: $green_status;
+    }
+
+    &__red {
+      color: $red;
+    }
+
+    &__blue {
+      color: $blue-icon;
+    }
+  }
+
+  .arrow {
+    &__green {
+      svg path {
+        fill: $green_status;
+      }
+    }
+
+    &__red {
+      svg path {
+        fill: $red;
+      }
+    }
+
+    &__blue {
+      svg path {
+        fill: $blue-icon;
+      }
+    }
+  }
+
+  th,
+  td {
+    padding: 15px 24px;
+    text-align: left;
+    border-top: 1px solid #eaeaea;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  tr:first-child th {
+    border-top: none;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,35 @@
+@import "@styles/variables";
+
+.exam-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    row-gap: 19px;
+
+    &__go-back {
+      display: flex;
+      align-items: center;
+      column-gap: 14px;
+      cursor: pointer;
+
+      p {
+        color: $blue_secondary;
+      }
+    }
+
+    &__label {
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    column-gap: 20px;
+  }
+}

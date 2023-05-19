@@ -1,0 +1,50 @@
+version: '3.8'
+
+networks:
+  prod-preptest-network: {}
+
+x-shared-environment: &shared-environment {}
+
+x-base-image: &base-image
+  restart: always
+  networks:
+    prod-preptest-network: {}
+  environment:
+    <<: *shared-environment
+  logging:
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  prod-preptest-web:
+    <<: *base-image
+    image: prod-preptest-web
+    hostname: prod-preptest-web
+    build:
+      context: .
+      dockerfile: devops/dockerfiles/Dockerfile.main
+      args:
+        NODE_VERSION: '14'
+        APP_ENV_FILE: '.env'
+    command: npm run start
+
+  prod-preptest-proxy:
+    <<: *base-image
+    image: prod-preptest-proxy
+    hostname: prod-preptest-proxy
+    build:
+      context: devops
+      dockerfile: dockerfiles/Dockerfile.nginx.tsl
+    links:
+      - prod-preptest-web:web
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/letsencrypt/live/prep.smartestprep.com/fullchain.pem:/certs/fullchain.pem:ro
+      - /etc/letsencrypt/live/prep.smartestprep.com/privkey.pem:/certs/privkey.pem:ro
+    environment:
+      TZ: 'Asia/Almaty'
+    depends_on:
+      - prod-preptest-web

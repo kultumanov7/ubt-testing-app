@@ -1,0 +1,65 @@
+@import "@styles/variables";
+
+.profile_avatar {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+  .profile_avatar_edit {
+    position: relative;
+    .avatar {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    img {
+      cursor: pointer;
+    }
+  }
+
+  label {
+    width: fit-content;
+  }
+
+  &_placeholder_wrapper {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient($blue-icon-light, $blue-icon);
+    border-radius: 50%;
+    width: 135px;
+    height: 135px;
+  }
+
+  &_placeholder_text {
+    color: $white;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 42px;
+  }
+
+  &_buttons {
+    display: flex;
+    margin-top: 20px;
+
+    button {
+      margin-right: 10px;
+      height: 40px;
+    }
+  }
+
+  .current-avatar {
+    width: 200px;
+    height: 200px;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

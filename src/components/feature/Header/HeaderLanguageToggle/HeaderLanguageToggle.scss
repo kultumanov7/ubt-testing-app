@@ -1,0 +1,82 @@
+@import "@styles/variables";
+
+@mixin position($position, $marginLeft, $display) {
+  position: $position;
+  margin-left: $marginLeft;
+  display: $display;
+}
+
+.switch-button {
+  font-family: "Gotham Pro Medium", sans-serif;
+  box-sizing: border-box;
+  width: 140px;
+  margin-left: 10px;
+  background: $gray-language-tab;
+  border-radius: 30px;
+  overflow: hidden;
+  font-size: 14px;
+  color: $blue-dark-tab;
+  position: relative;
+  padding-right: 60px;
+  box-shadow: 0 0 5px 0px $gray-language-tab;
+
+  &-checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+
+    &:checked + .switch-button-label:before {
+      transform: translateX(69px);
+      transition: transform 300ms linear;
+    }
+
+    & + .switch-button-label {
+      position: relative;
+      padding: 13px;
+      column-gap: 38px;
+      display: flex;
+
+      &:before {
+        content: "";
+        background-color: $white;
+        height: 100%;
+        width: 90%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 30px;
+        transform: translateX(0);
+        transition: transform 300ms;
+      }
+    }
+  }
+}
+
+.switch-button-label {
+  display: flex;
+
+  .checkmark {
+    padding-right: 4px;
+  }
+
+  &-span {
+    &-left {
+      @include position(relative, 17px, flex);
+    }
+
+    &-right-checked {
+      @include position(relative, -17px, flex);
+    }
+
+    &-right,
+    &-left-checked {
+      @include position(relative, 0, flex);
+    }
+  }
+}

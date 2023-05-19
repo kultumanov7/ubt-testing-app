@@ -1,0 +1,41 @@
+{
+  "HEADER": {
+    "BLOG": "Blog",
+    "USEFUL_RESOURCES": "Useful resources",
+    "PROFILE": {
+      "MY_PROFILE": "My profile",
+      "HELP": "Help",
+      "LOGOUT": "Sign out"
+    }
+  },
+  "SIDEBAR": {
+    "MY_TESTS": "My Tests",
+    "BALANCE": "Balance",
+    "MY_BALANCE": "My Balance",
+    "PROFILE": "Profile"
+  },
+  "TESTS": {
+    "TESTS": "Tests",
+    "TEST": "Test",
+    "CHOOSE_TEST": "Choose a test",
+    "ALL_TESTS": "All Tests",
+    "MY_TESTS": "My Tests",
+    "SUBJECTS": "Subjects",
+    "STATUS": "Status",
+    "START": "Start",
+    "CONTINUE": "Continue",
+    "LABELS": {
+      "LABEL_1": "Start/Finish"
+    }
+  },
+  "PROFILE": {
+    "CHANGE_PHOTO": "Change photo",
+    "DELETE_PHOTO": "Delete photo",
+    "UPLOAD_PHOTO": "Upload photo"
+  },
+  "BUTTON": {
+    "BUY": "Buy",
+    "SHOW_ANSWERS": "Show Answers",
+    "SAVE_RESPONSES": "Save Responses"
+  }
+}

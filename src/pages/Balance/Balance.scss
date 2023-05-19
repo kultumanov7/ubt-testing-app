@@ -1,0 +1,28 @@
+@import "@styles/variables";
+
+.balance {
+  .layout__container--white {
+    width: 60%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .layout__details {
+    padding: 40px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+}
+
+.transactions-history {
+  margin-top: 40px;
+
+  &__title {
+    margin-bottom: 20px;
+  }
+}

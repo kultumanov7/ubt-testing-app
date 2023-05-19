@@ -1,0 +1,41 @@
+{
+  "HEADER": {
+    "BLOG": "Блог",
+    "USEFUL_RESOURCES": "Полезные ресурсы",
+    "PROFILE": {
+      "MY_PROFILE": "Мой профиль",
+      "HELP": "Помощь",
+      "LOGOUT": "Выйти"
+    }
+  },
+  "SIDEBAR": {
+    "MY_TESTS": "Мои тесты",
+    "BALANCE": "Баланс",
+    "MY_BALANCE": "Мой баланс",
+    "PROFILE": "Профиль"
+  },
+  "TESTS": {
+    "TESTS": "Тесты",
+    "TEST": "Тест",
+    "CHOOSE_TEST": "Выберите тест",
+    "ALL_TESTS": "Все тесты",
+    "MY_TESTS": "Мои тесты",
+    "SUBJECTS": "Предметы",
+    "STATUS": "Статус",
+    "START": "Начать",
+    "CONTINUE": "Продолжить",
+    "LABELS": {
+      "LABEL_1": "Начало/завершение"
+    }
+  },
+  "PROFILE": {
+    "CHANGE_PHOTO": "Change photo",
+    "DELETE_PHOTO": "Delete photo",
+    "UPLOAD_PHOTO": "Upload photo"
+  },
+  "BUTTON": {
+    "BUY": "Купить",
+    "SHOW_ANSWERS": "Посмотреть ответы",
+    "SAVE_RESPONSES": "Сохранить ответы"
+  }
+}

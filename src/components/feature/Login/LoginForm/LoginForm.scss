@@ -1,0 +1,64 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: center;
+  height: 40vh;
+  width: 35%;
+
+  h1 {
+    font-weight: 700;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #1a202c;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.3px;
+    color: #718096;
+    margin: 24px 0;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .checkbox {
+    flex-direction: row-reverse;
+
+    &__input {
+      width: 20px;
+      height: 20px;
+      appearance: none;
+      outline: none;
+      border-radius: 50%;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:checked {
+        border: 1px solid #007bff;
+        background-color: #007bff;
+      }
+
+      &:checked::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

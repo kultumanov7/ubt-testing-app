@@ -1,0 +1,16 @@
+@import "@styles/variables";
+
+.layout-header {
+  &__upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    color: $black_light;
+  }
+}

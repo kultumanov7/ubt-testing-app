@@ -1,0 +1,9 @@
+@import "@styles/variables";
+
+.timer {
+  &__green {
+    font-weight: 400;
+    font-size: 22px;
+    color: $green_light;
+  }
+}
