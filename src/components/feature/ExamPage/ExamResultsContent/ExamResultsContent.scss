@@ -1,0 +1,42 @@
+@import "@styles/variables";
+
+.exam-results-content {
+  background: transparent;
+  border-radius: 10px;
+  width: 40%;
+  color: $blue_text;
+  margin-top: 24px;
+  font-size: 18px;
+
+  th {
+    padding: 19px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  td {
+    padding: 19px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  thead {
+    color: $blue_gray;
+
+    th:first-child {
+      text-align: left;
+      font-weight: 700;
+    }
+    th:last-child {
+      text-align: right;
+      font-weight: 700;
+    }
+  }
+
+  tbody td:first-child {
+    text-align: left;
+  }
+
+  tbody td:last-child {
+    text-align: right;
+    font-weight: bold;
+  }
+}

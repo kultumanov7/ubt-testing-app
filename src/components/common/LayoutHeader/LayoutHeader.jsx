@@ -16,12 +16,14 @@ const LayoutHeader = (props) => {
     <div className="layout-header">
       <div className="layout-header__upper">
         <h1 className="layout-header__title">{headerTitle}</h1>
-        {/* <Button
-          text={buttonText}
-          className="btn--secondary btn--pill"
-          onClick={btnOnClick}
-          iconLeft={<Icon name="add-activity" />}
-        /> */}
+        {buttonText && (
+          <Button
+            text={buttonText}
+            className="btn--secondary btn--pill"
+            onClick={btnOnClick}
+            iconLeft={<Icon name="add-activity" />}
+          />
+        )}
       </div>
       <TabsPane
         tabs={tabs}

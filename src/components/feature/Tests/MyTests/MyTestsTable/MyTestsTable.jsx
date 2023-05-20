@@ -4,9 +4,9 @@ import { convertToLocaleString, formatDateString } from "@utils/functions";
 import "./MyTestsTable.scss";
 import { Icon } from "@components/common";
 
-const MyTestsTable = ({ enrollments }) => {
+const MyTestsTable = ({ enrollments, setIsDetailsOpen }) => {
   const { t } = useTranslate();
-  const { startEnrollment } = useAction();
+  const { startEnrollment, getQuestions } = useAction();
   const navigate = useNavigate();
 
   const handleClickStatus = async (item) => {
@@ -23,10 +23,9 @@ const MyTestsTable = ({ enrollments }) => {
         navigate(`/my-tests/${item.id}`);
       }
       if (completedTime < currentTime) {
-        // console.log("GET /questions (expired)");
         // navigate(`/my-tests/${item.id}`);
-        alert("Время теста истекло");
-        // await getQuestions(item.id);
+        await getQuestions(item.id);
+        setIsDetailsOpen(true);
       }
     }
   };

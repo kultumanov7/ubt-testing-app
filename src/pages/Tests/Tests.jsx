@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BtnLoader, LayoutContainer, LayoutHeader } from "@components/common";
-import { AllTests, MyTests } from "@components/feature";
+import { AllTests, ExamResults, MyTests } from "@components/feature";
 import { useAction, useTranslate } from "@helpers/hooks";
 import { useSelector } from "react-redux";
 import "./Tests.scss";
@@ -19,7 +19,8 @@ const Tests = () => {
     ],
     { exams, isLoading } = useSelector((state) => state.exams),
     { fetchExams } = useAction(),
-    [currentTabId, setCurrentTabId] = useState(1);
+    [currentTabId, setCurrentTabId] = useState(1),
+    [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   useEffect(() => {
     fetchExams();
@@ -30,7 +31,7 @@ const Tests = () => {
       case 1:
         return <AllTests setCurrentTabId={setCurrentTabId} />;
       case 2:
-        return <MyTests />;
+        return <MyTests setIsDetailsOpen={setIsDetailsOpen} />;
       default:
         return <AllTests setCurrentTabId={setCurrentTabId} />;
     }
@@ -38,23 +39,28 @@ const Tests = () => {
 
   return (
     <>
-      {exams ? (
-        <div>
-          <LayoutContainer>
-            <LayoutHeader
-              headerTitle={t("TESTS.TESTS")}
-              buttonText="Начать новый тест"
-              tabs={tabs}
-              currentTabId={currentTabId}
-              setCurrentTabId={setCurrentTabId}
-            />
-            {getContent(currentTabId)}
-          </LayoutContainer>
-        </div>
+      {isDetailsOpen ? (
+        <LayoutContainer>
+          <ExamResults setIsDetailsOpen={setIsDetailsOpen} />
+        </LayoutContainer>
       ) : (
-        <div className="parent-loader">
-          <BtnLoader className={"btn-loader--blue-large"} />
-        </div>
+        <>
+          {exams ? (
+            <LayoutContainer>
+              <LayoutHeader
+                headerTitle={t("TESTS.TESTS")}
+                tabs={tabs}
+                currentTabId={currentTabId}
+                setCurrentTabId={setCurrentTabId}
+              />
+              {getContent(currentTabId)}
+            </LayoutContainer>
+          ) : (
+            <div className="parent-loader">
+              <BtnLoader className={"btn-loader--blue-large"} />
+            </div>
+          )}
+        </>
       )}
     </>
   );

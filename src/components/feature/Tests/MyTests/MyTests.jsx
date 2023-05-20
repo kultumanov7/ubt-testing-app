@@ -7,7 +7,7 @@ import { useAction } from "@helpers/hooks";
 import { MyTestsTable } from "./MyTestsTable";
 import "./MyTests.scss";
 
-const MyTests = () => {
+const MyTests = ({ setIsDetailsOpen }) => {
   const { exams, enrollments, isLoading } = useSelector((state) => state.exams),
     { fetchEnrollments } = useAction(),
     [testType, setTestType] = useState(null),
@@ -57,7 +57,10 @@ const MyTests = () => {
           <FormItem key={item.id} item={item} handleChange={handleChange} />
         )}
       />
-      <MyTestsTable enrollments={enrollments} />
+      <MyTestsTable
+        enrollments={enrollments}
+        setIsDetailsOpen={setIsDetailsOpen}
+      />
     </div>
   );
 };
